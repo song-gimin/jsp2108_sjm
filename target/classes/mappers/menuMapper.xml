@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.cjs2108_sjm.dao.MenuDAO">
+	
+	<select id="getMainMenu" resultType="com.spring.cjs2108_sjm.vo.DbProductVO">
+		select *,(select categoryMainName from categoryMain where categoryMainCode=#{mainKey}) as categoryMainName from dbProduct where substring(productCode,1,1) = #{mainKey};
+	</select>
+	
+	<select id="getMiddleMenu" resultType="com.spring.cjs2108_sjm.vo.DbProductVO">
+		select *,(select categoryMiddleName from categoryMiddle where categoryMiddleCode=#{middleKey}) as categoryMiddleName from dbProduct where substring(productCode,2,2) = #{middleKey};
+	</select>
+	
+</mapper>
